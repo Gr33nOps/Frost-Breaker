@@ -1,0 +1,13 @@
+# Visual Studio
+.vs/
+Debug/
+Release/
+*.exe
+*.user
+
+# SFML DLLs
+*.dll
+
+# OS
+.DS_Store
+Thumbs.db
