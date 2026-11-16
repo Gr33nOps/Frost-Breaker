@@ -305,6 +305,69 @@ void checkMouseControls(GameLogic &game, Ball &ball, Paddle &paddle, GameDesign 
     game.resetGame(ball, paddle);
 }
 
+void checkTimedLava(GameLogic &game, Ball &ball, Paddle &paddle) {
+    game.resetGame(ball, paddle);
+    game.clearBricks();
+    game.BRICK[0][0] = new Bricks(80, 80);
+    ball.reset(260, 400);
+    ball.velocity = {0, 0};
+    game.gameState = PLAYING;
+    Texture pickupTexture;
+    pickupTexture.loadFromFile("assets/animations/png/LavaPickupPulse.png");
+    const auto collect = [&] {
+        game.lavaPickups.emplace_back(pickupTexture, Vector2f(260, 400));
+        game.checkCollisionWithPickups(ball);
+    };
+    collect();
+    check(near(ball.lavaSeconds, 10), "a fresh lava pickup grants ten seconds");
+    game.moveBall(paddle, ball, 9.99f);
+    check(ball.isLava, "lava remains active until its ten seconds are used");
+    game.moveBall(paddle, ball, 0.02f);
+    check(!ball.isLava && ball.ballSprite.getTexture() == &ball.ballTexture,
+          "ten seconds of play restore the normal ball artwork");
+    collect();
+    game.moveBall(paddle, ball, 3.0f);
+    collect();
+    check(near(ball.lavaSeconds, 17), "stacking preserves the seven seconds already remaining");
+    game.moveBall(paddle, ball, 10.0f);
+    check(ball.isLava, "another lava brick adds ten seconds instead of replacing the remainder");
+    game.moveBall(paddle, ball, 7.01f);
+    check(!ball.isLava, "stacked lava time also expires");
+    collect();
+    game.gameState = PAUSE;
+    game.update(paddle, ball, 30);
+    game.gameState = STOP;
+    game.update(paddle, ball, 30);
+    game.gameState = PLAYING;
+    game.moveBall(paddle, ball, 9.99f);
+    check(ball.isLava, "pause and ready screens do not spend lava time");
+    game.moveBall(paddle, ball, 0.02f);
+    check(!ball.isLava, "lava resumes counting only during active play");
+    game.clearBricks();
+    game.BRICK[0][0] = new Bricks(280, 220);
+    score = 0;
+    ball.reset(260, 232);
+    ball.velocity = {0, -8};
+    ball.setLava(true);
+    ball.lavaSeconds = 0.005f;
+    game.moveBall(paddle, ball, 1.0f / 60);
+    check(!ball.isLava && ball.velocity.y > 0 && score == 10,
+          "expiry before a frost contact restores the normal bounce within that step");
+    game.clearBricks();
+    game.BRICK[0][0] = new Bricks(280, 220);
+    score = 0;
+    ball.reset(260, 232);
+    ball.velocity = {0, -8};
+    ball.setLava(true);
+    ball.lavaSeconds = 0.01f;
+    game.moveBall(paddle, ball, 1.0f / 60);
+    check(!ball.isLava && ball.velocity.y < 0 && score == 10 &&
+              near(ball.ballSprite.getPosition().y, 224),
+          "a frost contact before expiry still pierces and keeps its remaining travel");
+    game.resetGame(ball, paddle);
+    check(ball.lavaSeconds == 0, "a fresh campaign clears all stacked lava time");
+}
+
 int main() {
     std::cout << std::unitbuf;
     Ball ball(260, 500);
@@ -586,8 +649,8 @@ int main() {
         "losing a life removes lava power and restores normal artwork without respawning the orb");
     ball.ballSprite.setPosition(game.lavaPickups.front().sprite.getPosition());
     game.checkCollisionWithPickups(ball);
-    check(!ball.isLava && game.lavaPickups.size() == 1 && game.lavaPickups.front().collected,
-          "losing a life does not respawn the level's one consumed lava brick");
+    check(!ball.isLava && game.lavaPickups.size() == 2 && game.lavaPickups.front().collected,
+          "losing a life does not respawn consumed lava bricks");
     game.resetGame(ball, paddle);
     check(!ball.isLava && ball.ballSprite.getTexture() == &ball.ballTexture &&
               game.lavaPickups.size() == 1 && !game.lavaPickups.front().collected,
@@ -666,15 +729,15 @@ int main() {
     check(currentLevel == 2 && game.gameState == STOP && score == 80 && !ball.isLava &&
               ball.ballSprite.getTexture() == &ball.ballTexture && game.lavaPickups.size() == 1 &&
               lives == 2,
-          "level advance keeps the remaining lives and creates one fresh lava brick");
+          "level advance keeps remaining lives and restores the next level rewards");
     ball.ballSprite.setPosition(game.lavaPickups.front().sprite.getPosition());
     game.checkCollisionWithPickups(ball);
     check(ball.isLava && game.lavaPickups.front().collected,
           "the next level's orb must be collected to regain lava power");
     currentLevel = 8;
     game.initialize(ball, paddle);
-    check(!ball.isLava && game.lavaPickups.size() == 1,
-          "initializing a different level clears lava and places one protected lava brick");
+    check(!ball.isLava && ball.lavaSeconds == 0 && game.lavaPickups.size() == 3,
+          "initializing the castle clears lava time and places its three protected rewards");
     game.clearBricks();
     currentLevel = maxLevels;
     game.gameState = PLAYING;
@@ -736,8 +799,8 @@ int main() {
                 }
         check(ice > 0 && rock > 0 && other == 0,
               "each campaign level retains frost and permanent rock obstacles");
-        check(game.lavaPickups.size() == 1,
-              "every campaign stage has exactly one protected lava brick");
+        check(game.lavaPickups.size() >= 1 && game.lavaPickups.size() <= 3,
+              "every campaign stage has one to three protected lava bricks");
         if (!game.lavaPickups.empty())
             ++rewardLevels;
         for (const auto &pickup : game.lavaPickups) {
@@ -858,9 +921,11 @@ int main() {
     auto visiblePixels = [](const Image &image, int left, int top, int width, int height) {
         int count = 0;
         for (int y = top; y < top + height; ++y)
-            for (int x = left; x < left + width; ++x)
-                if (image.getPixel(unsigned(x), unsigned(y)).a)
+            for (int x = left; x < left + width; ++x) {
+                const auto pixel = image.getPixel(unsigned(x), unsigned(y));
+                if (pixel.r || pixel.g || pixel.b)
                     ++count;
+            }
         return count;
     };
     game.clearBricks();
@@ -896,6 +961,7 @@ int main() {
     checkCollisionRegressions(game, ball, paddle);
     checkCampaignLives(game, ball, paddle, design);
     checkMouseControls(game, ball, paddle, design);
+    checkTimedLava(game, ball, paddle);
     std::cout << failures << " failures\n";
     return failures ? 1 : 0;
 }

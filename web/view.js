@@ -111,7 +111,7 @@ export class View {
     ctx.drawImage(this.images.background, 0, 0);
     if (game.state === "menu") {
       ctx.drawImage(this.images["menu background"], 0, 0);
-      this.sprite("logo", 400, 200);
+      this.sprite("logo", 403, 206);
       this.button("start", 400, 350, "start");
       return;
     }
@@ -126,15 +126,17 @@ export class View {
           brick.x,
           brick.y,
         );
-    if (!game.pickup.collected)
+    for (const pickup of game.pickups) {
+      if (pickup.collected) continue;
       this.frame(
         "LavaPickupPulse",
-        game.pickup.x + 19,
-        game.pickup.y + 9,
+        pickup.x + 19,
+        pickup.y + 9,
         38,
         18,
         Math.floor(game.ball.age / 0.14) % 4,
       );
+    }
     for (const dot of game.trail) {
       ctx.globalAlpha = 1 - dot.age / 0.16;
       ctx.fillStyle = dot.age < 0.06 ? "#ffd06b" : "#ef5d34";
@@ -174,6 +176,14 @@ export class View {
     this.text("Lives", 660, 200, true);
     for (let i = 0; i < game.lives; i++)
       this.sprite("heart", 660 + (i - (game.lives - 1) / 2) * 44, 250);
+    if (b.lava)
+      this.text(
+        `Lava ${Math.ceil(b.lavaSeconds)}s`,
+        660,
+        520,
+        false,
+        "#ffb34f",
+      );
     if (game.state === "playing") return;
     ctx.drawImage(this.images.overlay, 0, 0);
     if (game.state === "ready") {

@@ -17,7 +17,8 @@ for (const mode of ["normal", "pickups"]) {
   const game = new Game(levels);
   game.start();
   for (let level = 1; level <= 10; level++) {
-    if (mode === "normal") game.pickup.collected = true;
+    if (mode === "normal")
+      for (const pickup of game.pickups) pickup.collected = true;
     let frame = 0,
       lastProgress = 0,
       previousScore = game.score,

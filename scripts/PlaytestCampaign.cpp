@@ -78,9 +78,9 @@ int main() {
                 game.inputHandle(paddle, ball, design, window, mouseMove);
                 const int previousLives = lives;
                 const bool approachingPaddle = position.y > 500 && ball.velocity.y > 0;
-                const bool hadLava = ball.isLava;
+                const float previousLavaSeconds = ball.lavaSeconds;
                 game.update(paddle, ball, dt);
-                if (!hadLava && ball.isLava)
+                if (ball.lavaSeconds > previousLavaSeconds + 1)
                     ++pickupsCollected;
                 if (approachingPaddle && ball.velocity.y < 0)
                     ++returns;

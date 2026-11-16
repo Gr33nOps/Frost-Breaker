@@ -1,0 +1,41 @@
+name: Checks
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  browser:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: npm test
+      - run: node tests/web-campaign.mjs
+      - run: python scripts/package_release.py --web-only
+      - run: python tests/verify_release.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: frost-breaker-web
+          path: dist/*-web.zip
+  windows:
+    runs-on: windows-latest
+    env:
+      ALSOFT_DRIVERS: 'null'
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build Windows release
+        shell: cmd
+        run: build.cmd
+      - name: Check collisions and campaign state
+        shell: cmd
+        run: tests\run-tests.cmd

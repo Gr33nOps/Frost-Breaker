@@ -1,5 +1,6 @@
 #include "Ball.hpp"
 #include "Constants.hpp"
+#include <algorithm>
 
 Ball::Ball(float X, float Y) {
     if (!ballTexture.loadFromFile("assets/animations/png/BallGlint.png") &&
@@ -40,6 +41,10 @@ void Ball::reset(float X, float Y) {
 }
 void Ball::setLava(bool enabled) {
     isLava = enabled;
+    if (!enabled)
+        lavaSeconds = 0;
+    else if (lavaSeconds <= 0)
+        lavaSeconds = 10;
     if (displayedLava != enabled) {
         displayedLava = enabled;
         animation.configure(isLava ? lavaTexture : ballTexture, {20, 20}, isLava ? 0.10f : 0.12f);
@@ -47,6 +52,19 @@ void Ball::setLava(bool enabled) {
     ballSprite.setTexture(isLava ? lavaTexture : ballTexture);
     animation.apply(ballSprite);
     ballSprite.setColor(Color::White);
+}
+
+void Ball::addLava() {
+    lavaSeconds += 10;
+    setLava(true);
+}
+
+void Ball::advanceLava(float seconds) {
+    if (!isLava || seconds <= 0)
+        return;
+    lavaSeconds = std::max(0.0f, lavaSeconds - seconds);
+    if (lavaSeconds < 0.00001f)
+        setLava(false);
 }
 
 void Ball::updateVisuals(float seconds) {

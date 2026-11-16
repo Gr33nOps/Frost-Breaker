@@ -9,15 +9,16 @@ def main():
     names = (ROOT / "assets/design/campaign-names.txt").read_text(encoding="utf-8").splitlines()
     if len(names) != 10:
         raise ValueError("Expected ten chapter names from PreviewArt.exe")
-    font = ImageFont.truetype(str(ROOT / "assets/fonts/Jersey10-Regular.ttf"), 40)
-    sheet = Image.new("RGB", (1064, 1974), "#284955")
+    font = ImageFont.truetype(str(ROOT / "assets/fonts/Jersey10-Regular.ttf"), 24)
+    sheet = Image.new("RGB", (1372, 424), "#284955")
     draw = ImageDraw.Draw(sheet)
     for number, name in enumerate(names, 1):
-        x = 8 + ((number - 1) % 2) * 528
-        y = 8 + ((number - 1) // 2) * 392
-        draw.text((x + 12, y + 3), f"{number:02}  {name}", font=font, fill="#edf7f7")
+        x = 12 + ((number - 1) % 5) * 272
+        y = 12 + ((number - 1) // 5) * 206
+        draw.text((x + 4, y), f"{number:02}  {name}", font=font, fill="#edf7f7")
         with Image.open(ROOT / f"assets/design/level-{number:02}-preview.png") as image:
-            sheet.paste(image.crop((0, 36, 520, 376)), (x, y + 44))
+            thumbnail = image.crop((0, 36, 520, 376)).resize((260, 170), Image.Resampling.NEAREST)
+            sheet.paste(thumbnail, (x, y + 28))
     sheet.save(ROOT / "assets/design/campaign-preview.png")
     print("Rendered all ten campaign layouts into assets/design/campaign-preview.png")
 

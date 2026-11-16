@@ -28,9 +28,10 @@ int main(int argc, char **argv) {
         design.drawLivesLogo(window);
         design.drawLives(window, 5);
         design.drawScoreLogo(window);
-        design.drawScore(window, 180);
+        design.drawScore(window, score);
         design.drawHighScoreLogo(window);
         design.drawHighScore(window, 1080);
+        design.drawLavaTime(window, ball.lavaSeconds);
     };
     ball.ballSprite.setPosition(260, 440);
     gameplay();

@@ -75,6 +75,7 @@ int main() {
         gameDesign.drawLives(window, lives);
         gameDesign.drawHighScoreLogo(window);
         gameDesign.drawHighScore(window, highScore);
+        gameDesign.drawLavaTime(window, ball.lavaSeconds);
 
         if (gameLogic.gameState == MENU) {
             gameDesign.drawMenuScreen(window);

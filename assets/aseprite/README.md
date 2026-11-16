@@ -37,8 +37,12 @@ These are editable, layered RGBA Aseprite files. Draw at the native canvas resol
 | 5 lives.aseprite | 110 x 13 | 220 x 26 |
 | PixelFont.aseprite | 264 x 8 | 528 x 16 |
 
-Open any source directly in Aseprite. Export PNG at 200% with nearest-neighbor to the matching assets/images filename. Keep the source at native size. Sprites and scenery began as Piskel pixel drawings. The revised panel, ball and paddle use the rock's blue-grey palette; buttons use frost cyan: buttons have carved frost edges and separate text, outline and shadow layers; the logo has separate faces, bevel, extrusion, frost edges and readable e/a/s openings. Mountain streaks were replaced with broad muted faces using Aseprite's pixel API. Lives rows have a layer for each heart. The gameplay background separates its playfield, sidebar body and frame; internal decorations are removed. The normal ball and paddle use rock colours; the lava ball retains its molten palette. The paddle has a stone-slab silhouette, chipped underside, broad facets and small surface seams on three editable layers. Its 40 x 11 canvas and collision size are preserved.
+Open a source in Aseprite and draw with a one-pixel pencil. Export at 200% with nearest-neighbor scaling to its matching `assets/images/` filename. Keep the editable source at native resolution.
 
-Rocks take three hits. Hit one uses RockCracked; hit two reveals RockEmpty or RockLava. Hit three destroys the rock and grants lava only if it contained lava. All frost and rock states share the same canvas and collision dimensions. Crack marks are separate editable layers. There is no standalone lava block. The optional PixelFont atlas is not used by the restored HUD. Its glyph order is recorded in manifest.json; preserve the 6 x 8 native cells when editing it.
+The sidebar, buttons, normal ball and chipped paddle share a slate-blue stone palette. The logo blends frost cyan into stone. Separate layers hold the surface grain, facets, lettering and outlines. The bright landscape and transparent gameplay overlay keep their own layers.
 
-The current sources and downloadable archive are in assets/manual-redraw/. scripts/export_manual_art.py converts the saved drawings and verifies Aseprite PNG round trips. The older scripts/draw_pixel_assets.py recreates the rejected artwork and must not be used for this set. Use Aseprite export to preserve subsequent edits. The try again2.aseprite hover variant also uses a 112 x 34 canvas.
+Rocks are permanent obstacles. Levels contain one to three separate lava power bricks. Every collected lava brick adds ten seconds to the remaining power time; losing a life or changing levels clears it. Legacy cracked-rock artwork is retained as an editable drawing but is not used for rock damage.
+
+The optional PixelFont atlas has 6 x 8 native cells, with its glyph order in `manifest.json`. Live game text uses Jersey 10 from `assets/fonts/`.
+
+`assets/manual-redraw/piskel/` holds the matching Piskel working files. `scripts/export_manual_art.py` converts those saved drawings and checks Aseprite PNG round trips. Export directly from Aseprite to preserve edits made only to an Aseprite source.

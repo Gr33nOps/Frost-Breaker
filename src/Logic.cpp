@@ -68,7 +68,8 @@ void GameLogic::moveBall(Paddle &paddle, Ball &ball, float seconds, Vector2f pad
     std::vector<Hit> hits;
     hits.reserve(4);
     for (int bounce = 0; bounce < 8 && remaining > 0; ++bounce) {
-        const auto movement = ball.velocity * remaining;
+        const float segment = ball.isLava ? std::min(remaining, ball.lavaSeconds * 60) : remaining;
+        const auto movement = ball.velocity * segment;
         float first = 1;
         hits.clear();
         const auto remember = [&](Hit hit) {
@@ -89,9 +90,9 @@ void GameLogic::moveBall(Paddle &paddle, Ball &ball, float seconds, Vector2f pad
             remember({{(BALL_RADIUS - position.y) / movement.y, {0, 1}, 0}});
 
         auto paddleBounds = paddle.paddleSprite.getGlobalBounds();
-        const auto paddleTravel = paddleMovement * (remaining / duration);
-        paddleBounds.left -= paddleTravel.x;
-        paddleBounds.top -= paddleTravel.y;
+        const auto paddleTravel = paddleMovement * (segment / duration);
+        paddleBounds.left -= paddleMovement.x * (remaining / duration);
+        paddleBounds.top -= paddleMovement.y * (remaining / duration);
         Collision::Contact contact;
         if (ball.velocity.y > 0 &&
             Collision::rectangle(position, movement - paddleTravel, BALL_RADIUS, paddleBounds,
@@ -122,14 +123,15 @@ void GameLogic::moveBall(Paddle &paddle, Ball &ball, float seconds, Vector2f pad
             }
         }
         position += movement * first;
-        remaining *= 1 - first;
+        remaining = std::max(0.0f, remaining - segment * first);
+        ball.advanceLava(segment * first / 60);
         if (hits.empty())
-            break;
+            continue;
 
         for (const auto &hit : hits)
             if (hit.pickup) {
                 hit.pickup->collected = true;
-                ball.setLava(true);
+                ball.addLava();
                 effects.impact(PixelImpact::Lava, hit.pickup->sprite.getPosition());
                 lavaSound.play();
             }
@@ -203,7 +205,7 @@ void GameLogic::checkCollisionWithPickups(Ball &ball) {
         if (!pickup.touches(ball.ballSprite.getPosition(), BALL_RADIUS))
             continue;
         pickup.collected = true;
-        ball.setLava(true);
+        ball.addLava();
         effects.impact(PixelImpact::Lava, pickup.sprite.getPosition());
         lavaSound.play();
     }

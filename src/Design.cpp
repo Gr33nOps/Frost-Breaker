@@ -150,6 +150,15 @@ void GameDesign::Win(RenderWindow &window) {
     drawTextCentered(window, gameWinText, "You Win", 300, 300);
 }
 
+void GameDesign::drawLavaTime(RenderWindow &window, float seconds) {
+    if (seconds <= 0)
+        return;
+    Text timer;
+    setupText(timer, SecondarySize, Color(255, 179, 79));
+    drawTextCentered(window, timer, "Lava " + std::to_string(int(std::ceil(seconds))) + "s", 660,
+                     520);
+}
+
 void GameDesign::drawStopOverlay(RenderWindow &window) {
     window.draw(overlaySprite);
     drawTextCentered(window, readyText, "READY?", 260, 220);
@@ -168,7 +177,7 @@ void GameDesign::drawPausedScreen(RenderWindow &window) {
 
 void GameDesign::drawMenuScreen(RenderWindow &window) {
     window.draw(menuSprite);
-    drawButton(window, gameLogoSprite, gameLogoSprite2, 400, 200);
+    drawButton(window, gameLogoSprite, gameLogoSprite2, 403, 206);
     drawButton(window, startButtonSprite, startButtonSprite2, 400, 350);
     drawButton(window, quitButtonSprite, quitButtonSprite2, 400, 450);
 }

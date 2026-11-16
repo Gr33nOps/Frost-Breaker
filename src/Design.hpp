@@ -17,6 +17,7 @@ class GameDesign {
     void drawHighScoreLogo(RenderWindow &window);
     void drawHighScore(RenderWindow &window, int highscore);
     void drawLives(RenderWindow &window, int lives);
+    void drawLavaTime(RenderWindow &window, float seconds);
     void Win(RenderWindow &window);
     void drawStopOverlay(RenderWindow &window);
     void drawPausedScreen(RenderWindow &window);

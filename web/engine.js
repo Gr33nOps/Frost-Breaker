@@ -142,6 +142,7 @@ export class Game {
       vx: 8 * 0.34202014,
       vy: -8 * 0.93969262,
       lava: false,
+      lavaSeconds: 0,
       age: 0,
     };
     this.effects = [];
@@ -151,6 +152,7 @@ export class Game {
   }
   loadLevel() {
     this.bricks = [];
+    this.pickups = [];
     this.levels[this.level - 1].tiles.forEach((line, row) =>
       [...line].forEach((type, col) => {
         const brick = {
@@ -162,7 +164,8 @@ export class Game {
           destroyed: false,
         };
         if (type === "F" || type === "R") this.bricks.push(brick);
-        else if (type === "L") this.pickup = { ...brick, collected: false };
+        else if (type === "L")
+          this.pickups.push({ ...brick, collected: false });
       }),
     );
     this.serve();
@@ -195,6 +198,21 @@ export class Game {
     this.stopInput();
     this.sound(this.state === "pause" ? "pause" : "resume");
   }
+  addLava() {
+    this.ball.lavaSeconds += 10;
+    this.ball.lava = true;
+  }
+  advanceLava(seconds) {
+    const b = this.ball;
+    if (!b.lava || seconds <= 0) return;
+    b.lavaSeconds = Math.max(0, b.lavaSeconds - seconds);
+    if (b.lavaSeconds < 0.00001) {
+      b.lava = false;
+      b.lavaSeconds = 0;
+      this.trail = [];
+      this.trailTime = 0;
+    }
+  }
   moveBall(seconds, paddleMovement = 0) {
     const b = this.ball,
       duration = seconds * 60;
@@ -204,17 +222,20 @@ export class Game {
     let position = { x: b.x, y: b.y },
       remaining = duration;
     for (let bounce = 0; bounce < 8 && remaining > 0; bounce++) {
-      const movement = { x: b.vx * remaining, y: b.vy * remaining };
+      const segment = b.lava
+        ? Math.min(remaining, b.lavaSeconds * 60)
+        : remaining;
+      const movement = { x: b.vx * segment, y: b.vy * segment };
       let first = 1,
         hits = [];
-      const remember = (contact, kind, brick = null) => {
+      const remember = (contact, kind, brick = null, pickup = null) => {
         if (!contact || contact.time < 0 || contact.time > 1) return;
         if (contact.time < first - 0.00001) {
           hits = [];
           first = contact.time;
         }
         if (Math.abs(contact.time - first) <= 0.00001)
-          hits.push({ contact, kind, brick });
+          hits.push({ contact, kind, brick, pickup });
       };
       if (movement.x < 0)
         remember(
@@ -243,8 +264,13 @@ export class Game {
           },
           "wall",
         );
-      const travel = (paddleMovement * remaining) / duration;
-      const bounds = { x: this.paddle.x - 40 - travel, y: 539, w: 80, h: 22 };
+      const travel = (paddleMovement * segment) / duration;
+      const bounds = {
+        x: this.paddle.x - 40 - (paddleMovement * remaining) / duration,
+        y: 539,
+        w: 80,
+        h: 22,
+      };
       const paddleHit = sweepRectangle(
         position,
         { x: movement.x - travel, y: movement.y },
@@ -266,8 +292,8 @@ export class Game {
             brick,
           );
       }
-      if (!this.pickup.collected) {
-        const p = this.pickup;
+      for (const p of this.pickups) {
+        if (p.collected) continue;
         const distance = Math.hypot(
           position.x - clamp(position.x, p.x, p.x + p.w),
           position.y - clamp(position.y, p.y, p.y + p.h),
@@ -277,16 +303,19 @@ export class Game {
             ? { time: 0, normal: { x: 0, y: 0 }, depth: 0 }
             : sweepRectangle(position, movement, 10, p),
           "pickup",
+          null,
+          p,
         );
       }
       position = add(position, scale(movement, first));
-      remaining *= 1 - first;
-      if (!hits.length) break;
+      remaining = Math.max(0, remaining - segment * first);
+      this.advanceLava((segment * first) / 60);
+      if (!hits.length) continue;
       for (const hit of hits)
         if (hit.kind === "pickup") {
-          this.pickup.collected = true;
-          b.lava = true;
-          this.impact("LavaBurst", this.pickup.x + 19, this.pickup.y + 9);
+          hit.pickup.collected = true;
+          this.addLava();
+          this.impact("LavaBurst", hit.pickup.x + 19, hit.pickup.y + 9);
           this.sound("lava-ignite");
         }
       let normal = { x: 0, y: 0 },
@@ -387,10 +416,8 @@ export class Game {
       }
       this.moveBall(dt, p.x - oldX);
       if (this.ball.y - 10 > 600) {
-        const collected = this.pickup.collected;
         this.lives--;
         this.serve();
-        this.pickup.collected = collected;
         if (this.lives <= 0) this.state = "over";
         this.sound(this.lives <= 0 ? "game-over" : "life-lost");
         return;
