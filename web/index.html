@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <meta name="theme-color" content="#284955" />
+    <meta
+      name="description"
+      content="Break the frost, find the lava, and clear ten pixel-art levels with five lives."
+    />
+    <title>Frost Breaker</title>
+    <link rel="icon" href="assets/icon.png" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main id="game">
+      <canvas
+        id="screen"
+        width="800"
+        height="600"
+        tabindex="0"
+        aria-label="Frost Breaker. Move with mouse or arrow keys. Click or Space to launch. Escape to pause."
+      ></canvas>
+      <nav aria-label="Game settings">
+        <button
+          id="sound"
+          aria-label="Mute audio"
+          title="Mute audio"
+          aria-pressed="false"
+        >
+          ♪
+        </button>
+        <button id="fullscreen" aria-label="Fullscreen" title="Fullscreen">
+          ⛶
+        </button>
+      </nav>
+      <p id="status" role="status">Loading Frost Breaker…</p>
+    </main>
+    <script type="module" src="main.js"></script>
+  </body>
+</html>
