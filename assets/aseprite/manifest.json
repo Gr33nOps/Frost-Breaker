@@ -1,0 +1,444 @@
+{
+  "origin": "Pixel artwork with matching stone panel, logo, buttons and player sprites, original pixel font and frost bricks",
+  "exportScale": 2,
+  "assets": [
+    {
+      "name": "Ball",
+      "canvas": [
+        10,
+        10
+      ],
+      "source": "assets/aseprite/Ball.aseprite",
+      "png": "assets/images/Ball.png",
+      "layers": [
+        "Rock blue-grey palette"
+      ]
+    },
+    {
+      "name": "Brick",
+      "canvas": [
+        19,
+        9
+      ],
+      "source": "assets/aseprite/Brick.aseprite",
+      "png": "assets/images/Brick.png",
+      "layers": [
+        "Layer 1"
+      ]
+    },
+    {
+      "name": "Paddle",
+      "canvas": [
+        40,
+        11
+      ],
+      "source": "assets/aseprite/Paddle.aseprite",
+      "png": "assets/images/Paddle.png",
+      "layers": [
+        "Chipped stone silhouette",
+        "Broad rock facets",
+        "Surface chips and seams"
+      ]
+    },
+    {
+      "name": "heart",
+      "canvas": [
+        15,
+        13
+      ],
+      "source": "assets/aseprite/heart.aseprite",
+      "png": "assets/images/heart.png",
+      "layers": [
+        "Layer 1"
+      ]
+    },
+    {
+      "name": "menu background",
+      "canvas": [
+        400,
+        300
+      ],
+      "source": "assets/aseprite/menu background.aseprite",
+      "png": "assets/images/menu background.png",
+      "layers": [
+        "Sky, mountains and forest",
+        "Broad mountain faces"
+      ]
+    },
+    {
+      "name": "logo",
+      "canvas": [
+        290,
+        52
+      ],
+      "source": "assets/aseprite/logo.aseprite",
+      "png": "assets/images/logo.png",
+      "layers": [
+        "Stone extrusion",
+        "Letter bevel",
+        "Frosted stone faces",
+        "Ice and mineral flecks",
+        "Frozen carved edges",
+        "Open letter counters"
+      ]
+    },
+    {
+      "name": "start",
+      "canvas": [
+        112,
+        34
+      ],
+      "source": "assets/aseprite/start.aseprite",
+      "png": "assets/images/start.png",
+      "layers": [
+        "Carved blue-grey stone",
+        "Text depth",
+        "Text outline",
+        "Start"
+      ]
+    },
+    {
+      "name": "start2",
+      "canvas": [
+        112,
+        34
+      ],
+      "source": "assets/aseprite/start2.aseprite",
+      "png": "assets/images/start2.png",
+      "layers": [
+        "Carved blue-grey stone - hover",
+        "Text depth",
+        "Text outline",
+        "Start"
+      ]
+    },
+    {
+      "name": "Quit",
+      "canvas": [
+        112,
+        34
+      ],
+      "source": "assets/aseprite/Quit.aseprite",
+      "png": "assets/images/Quit.png",
+      "layers": [
+        "Carved blue-grey stone",
+        "Text depth",
+        "Text outline",
+        "Quit"
+      ]
+    },
+    {
+      "name": "quit2",
+      "canvas": [
+        112,
+        34
+      ],
+      "source": "assets/aseprite/quit2.aseprite",
+      "png": "assets/images/quit2.png",
+      "layers": [
+        "Carved blue-grey stone - hover",
+        "Text depth",
+        "Text outline",
+        "Quit"
+      ]
+    },
+    {
+      "name": "resume",
+      "canvas": [
+        112,
+        34
+      ],
+      "source": "assets/aseprite/resume.aseprite",
+      "png": "assets/images/resume.png",
+      "layers": [
+        "Carved blue-grey stone",
+        "Text depth",
+        "Text outline",
+        "Resume"
+      ]
+    },
+    {
+      "name": "resume2",
+      "canvas": [
+        112,
+        34
+      ],
+      "source": "assets/aseprite/resume2.aseprite",
+      "png": "assets/images/resume2.png",
+      "layers": [
+        "Carved blue-grey stone - hover",
+        "Text depth",
+        "Text outline",
+        "Resume"
+      ]
+    },
+    {
+      "name": "menu",
+      "canvas": [
+        112,
+        34
+      ],
+      "source": "assets/aseprite/menu.aseprite",
+      "png": "assets/images/menu.png",
+      "layers": [
+        "Carved blue-grey stone",
+        "Text depth",
+        "Text outline",
+        "Menu"
+      ]
+    },
+    {
+      "name": "menu2",
+      "canvas": [
+        112,
+        34
+      ],
+      "source": "assets/aseprite/menu2.aseprite",
+      "png": "assets/images/menu2.png",
+      "layers": [
+        "Carved blue-grey stone - hover",
+        "Text depth",
+        "Text outline",
+        "Menu"
+      ]
+    },
+    {
+      "name": "play again",
+      "canvas": [
+        112,
+        34
+      ],
+      "source": "assets/aseprite/play again.aseprite",
+      "png": "assets/images/play again.png",
+      "layers": [
+        "Carved blue-grey stone",
+        "Text depth",
+        "Text outline",
+        "Play again"
+      ]
+    },
+    {
+      "name": "play again2",
+      "canvas": [
+        112,
+        34
+      ],
+      "source": "assets/aseprite/play again2.aseprite",
+      "png": "assets/images/play again2.png",
+      "layers": [
+        "Carved blue-grey stone - hover",
+        "Text depth",
+        "Text outline",
+        "Play again"
+      ]
+    },
+    {
+      "name": "try again",
+      "canvas": [
+        112,
+        34
+      ],
+      "source": "assets/aseprite/try again.aseprite",
+      "png": "assets/images/try again.png",
+      "layers": [
+        "Carved blue-grey stone",
+        "Text depth",
+        "Text outline",
+        "Try again"
+      ]
+    },
+    {
+      "name": "try again2",
+      "canvas": [
+        112,
+        34
+      ],
+      "source": "assets/aseprite/try again2.aseprite",
+      "png": "assets/images/try again2.png",
+      "layers": [
+        "Carved blue-grey stone - hover",
+        "Text depth",
+        "Text outline",
+        "Try again"
+      ]
+    },
+    {
+      "name": "overlay",
+      "canvas": [
+        260,
+        300
+      ],
+      "source": "assets/aseprite/overlay.aseprite",
+      "png": "assets/images/overlay.png",
+      "layers": [
+        "Transparent playfield dimming"
+      ]
+    },
+    {
+      "name": "overlay2",
+      "canvas": [
+        400,
+        300
+      ],
+      "source": "assets/aseprite/overlay2.aseprite",
+      "png": "assets/images/overlay2.png",
+      "layers": [
+        "Transparent screen dimming"
+      ]
+    },
+    {
+      "name": "Rock",
+      "canvas": [
+        19,
+        9
+      ],
+      "source": "assets/aseprite/Rock.aseprite",
+      "png": "assets/images/Rock.png",
+      "layers": [
+        "Panel-coloured stone"
+      ]
+    },
+    {
+      "name": "RockCracked",
+      "canvas": [
+        19,
+        9
+      ],
+      "source": "assets/aseprite/RockCracked.aseprite",
+      "png": "assets/images/RockCracked.png",
+      "layers": [
+        "Panel-coloured stone",
+        "First-hit crack"
+      ]
+    },
+    {
+      "name": "LavaPickup",
+      "canvas": [
+        19,
+        9
+      ],
+      "source": "assets/aseprite/LavaPickup.aseprite",
+      "png": "assets/images/LavaPickup.png",
+      "layers": [
+        "Basalt brick",
+        "Glowing lava cracks",
+        "Hot highlights"
+      ]
+    },
+    {
+      "name": "LavaBall",
+      "canvas": [
+        10,
+        10
+      ],
+      "source": "assets/aseprite/LavaBall.aseprite",
+      "png": "assets/images/LavaBall.png",
+      "layers": [
+        "Molten ball"
+      ]
+    },
+    {
+      "name": "background",
+      "canvas": [
+        400,
+        300
+      ],
+      "source": "assets/aseprite/background.aseprite",
+      "png": "assets/images/background.png",
+      "layers": [
+        "Snowy playfield",
+        "Solid blue-grey stone panel",
+        "Chipped stone planes",
+        "Visible mineral grain",
+        "Stone chips"
+      ]
+    },
+    {
+      "name": "logo2",
+      "canvas": [
+        290,
+        52
+      ],
+      "source": "assets/aseprite/logo2.aseprite",
+      "png": "assets/images/logo2.png",
+      "layers": [
+        "Stone extrusion",
+        "Letter bevel",
+        "Frosted stone faces",
+        "Ice and mineral flecks",
+        "Frozen carved edges",
+        "Open letter counters"
+      ]
+    },
+    {
+      "name": "1 lives",
+      "canvas": [
+        110,
+        13
+      ],
+      "source": "assets/aseprite/1 lives.aseprite",
+      "png": "assets/images/1 lives.png",
+      "layers": [
+        "Heart 1"
+      ]
+    },
+    {
+      "name": "2 lives",
+      "canvas": [
+        110,
+        13
+      ],
+      "source": "assets/aseprite/2 lives.aseprite",
+      "png": "assets/images/2 lives.png",
+      "layers": [
+        "Heart 1",
+        "Heart 2"
+      ]
+    },
+    {
+      "name": "3 lives",
+      "canvas": [
+        110,
+        13
+      ],
+      "source": "assets/aseprite/3 lives.aseprite",
+      "png": "assets/images/3 lives.png",
+      "layers": [
+        "Heart 1",
+        "Heart 2",
+        "Heart 3"
+      ]
+    },
+    {
+      "name": "4 lives",
+      "canvas": [
+        110,
+        13
+      ],
+      "source": "assets/aseprite/4 lives.aseprite",
+      "png": "assets/images/4 lives.png",
+      "layers": [
+        "Heart 1",
+        "Heart 2",
+        "Heart 3",
+        "Heart 4"
+      ]
+    },
+    {
+      "name": "5 lives",
+      "canvas": [
+        110,
+        13
+      ],
+      "source": "assets/aseprite/5 lives.aseprite",
+      "png": "assets/images/5 lives.png",
+      "layers": [
+        "Heart 1",
+        "Heart 2",
+        "Heart 3",
+        "Heart 4",
+        "Heart 5"
+      ]
+    }
+  ]
+}

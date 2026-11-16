@@ -1,0 +1,62 @@
+[
+  {
+    "name": "frost-shatter",
+    "clipped": "0",
+    "url": "https://sfxr.me/#84i6grNDrPZwP6azYzEuvv53o8HLUojxcoR4MTaCvo81KskE7jEfaqQuezBTsp5QHEx8p6TtfAqm9srAfczfGGJJg1PT9Cu8P2DLKySqdv3Pkfb1dkMFK2WBZ"
+  },
+  {
+    "name": "frost-shatter-ring",
+    "clipped": "0",
+    "url": "https://sfxr.me/#6TB2TVNgWAi3fwpn8h1gtsTgjbf5WUqsYoD4ASrZXv7bnEwxChTtqFDh33g3ix3rTZ57zcWv5r2bvGYVnA3C6pqWZxGnZU2D8bpdX7HpA463JuvRs6AXjiXQB"
+  },
+  {
+    "name": "wall-tick",
+    "clipped": "0",
+    "url": "https://sfxr.me/#57uBnWV6nWXJgXhZ9KiVB7BvaeSSMvp9X8TjDshXog5NmDnTznW4qseELPnz8jvkMU9qLyYmqoc7mx5kozABgVRwMXFKFrAoLg4No2K5yWPdZn32kVViGZxHM"
+  },
+  {
+    "name": "paddle-knock",
+    "clipped": "0",
+    "url": "https://sfxr.me/#11111mqKReUsJvsZszR6CRa41SQLvzJymgtFskAQha9zcPNqysuWgbjHb9828uwXZLwWLTja33NiVsxSFGU6nMTYXXbWsWuivht71ssKWyM1tzXr2Ga5tgo"
+  },
+  {
+    "name": "rock-hit",
+    "clipped": "0",
+    "url": "https://sfxr.me/#7BMHBGCiDfkfaMn5uo1AJucWBbX5BAdJZYWkevz1HBDgg7R8fUEVBH1xfc6gBVDD9LTzRLozxfHdHrKyeyPXMB4hwKs7LSE9KaJ62Cen7VSYaqgMdPQma6j11"
+  },
+  {
+    "name": "rock-break",
+    "clipped": "0",
+    "url": "https://sfxr.me/#7BMHBGL5s2mguTDXLYWX6mCcHLPkwfnJEtwrP9wb6NekhUFNQJgUKUHZDQXpoDNj5eBuhaYQ65sQumnBvLnaYZPUTL2bN4hHwscdK6zxW3xRFadWSM8dtb16X"
+  },
+  {
+    "name": "lava-ignite",
+    "clipped": "0",
+    "url": "https://sfxr.me/#8pukgHEFMmr42Vszw5W5jdrxxmGATaRZoqBaw8XbJfkSfPW8zLDMxbkzCywZCJZJySPWz5HhA6JcbZha1mwJeo3TLV1swuh4YEyJQs6HeiLjQRZmwtMTPxHqh"
+  },
+  {
+    "name": "life-lost",
+    "clipped": "0",
+    "url": "https://sfxr.me/#57uBnWcURsYKtmkuFUqvVHh52kobgfhQRGMwvRUxechnnv9VDJGAqW94tbKhZVcho951ZPoht99grqpBzQbXfj8N6VS9ziAEtEpAofydJBRRiLBcxXt6f1prB"
+  },
+  {
+    "name": "menu-back",
+    "clipped": "0",
+    "url": "https://sfxr.me/#57uBnWcURQNHSVbZfh6wEZtP5UjzLL8HTKd7XfFBwrjUocZtFfEQfc8fTRHDu53mDhH66ZwfscwjRQWAqJ74LUJyHk6nGLaLo2nfsesqhu75KYdKoQVBsA6EK"
+  },
+  {
+    "name": "pause",
+    "clipped": "0",
+    "url": "https://sfxr.me/#57uBnWfMLbbGC3sU6MZmxVJoyetUoc9NjPJqC6BaGBdmXz1KknrYvCLpwb5MZdtvyw2obqm6A59QqnB5nVeEN92CZVojnNqwCHD1wxQ1BCkg4y3nNkuyp7vAb"
+  },
+  {
+    "name": "resume",
+    "clipped": "0",
+    "url": "https://sfxr.me/#57uBnWfMLbbGC3sU6MZmxVHc21J9rgRK9AuX4epWZsgGcV81TQd5Z1m5T7HgPwT5G8e7tryohU1zmBfhBrT6T389sXAC8H4zJk4Ay1HfHFeKiA6JBNUv3TMaf"
+  },
+  {
+    "name": "launch",
+    "clipped": "0",
+    "url": "https://sfxr.me/#57uBnWSzhdtKiRrbHG3TQecvzDfaWTqNDVUPMVKhSe2PSYXff33zdiyEk3R6wM2uTHQ5EasrA6z65SMLQaqFsZGfUwb4ZEMK3Dtew7D8y4zYVZBh3rV1UMbkj"
+  }
+]

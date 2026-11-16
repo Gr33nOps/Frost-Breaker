@@ -1,0 +1,200 @@
+[
+  {
+    "name": "Ball",
+    "width": 10,
+    "height": 10,
+    "layers": 1
+  },
+  {
+    "name": "Brick",
+    "width": 19,
+    "height": 9,
+    "layers": 1
+  },
+  {
+    "name": "Paddle",
+    "width": 40,
+    "height": 11,
+    "layers": 3
+  },
+  {
+    "name": "heart",
+    "width": 15,
+    "height": 13,
+    "layers": 1
+  },
+  {
+    "name": "menu background",
+    "width": 400,
+    "height": 300,
+    "layers": 2
+  },
+  {
+    "name": "sidebar landscape",
+    "width": 400,
+    "height": 300,
+    "layers": 4
+  },
+  {
+    "name": "logo",
+    "width": 290,
+    "height": 52,
+    "layers": 6
+  },
+  {
+    "name": "button base",
+    "width": 112,
+    "height": 34,
+    "layers": 1
+  },
+  {
+    "name": "start",
+    "width": 112,
+    "height": 34,
+    "layers": 4
+  },
+  {
+    "name": "start2",
+    "width": 112,
+    "height": 34,
+    "layers": 4
+  },
+  {
+    "name": "Quit",
+    "width": 112,
+    "height": 34,
+    "layers": 4
+  },
+  {
+    "name": "quit2",
+    "width": 112,
+    "height": 34,
+    "layers": 4
+  },
+  {
+    "name": "resume",
+    "width": 112,
+    "height": 34,
+    "layers": 4
+  },
+  {
+    "name": "resume2",
+    "width": 112,
+    "height": 34,
+    "layers": 4
+  },
+  {
+    "name": "menu",
+    "width": 112,
+    "height": 34,
+    "layers": 4
+  },
+  {
+    "name": "menu2",
+    "width": 112,
+    "height": 34,
+    "layers": 4
+  },
+  {
+    "name": "play again",
+    "width": 112,
+    "height": 34,
+    "layers": 4
+  },
+  {
+    "name": "play again2",
+    "width": 112,
+    "height": 34,
+    "layers": 4
+  },
+  {
+    "name": "try again",
+    "width": 112,
+    "height": 34,
+    "layers": 4
+  },
+  {
+    "name": "try again2",
+    "width": 112,
+    "height": 34,
+    "layers": 4
+  },
+  {
+    "name": "overlay",
+    "width": 260,
+    "height": 300,
+    "layers": 1
+  },
+  {
+    "name": "overlay2",
+    "width": 400,
+    "height": 300,
+    "layers": 1
+  },
+  {
+    "name": "Rock",
+    "width": 19,
+    "height": 9,
+    "layers": 1
+  },
+  {
+    "name": "RockCracked",
+    "width": 19,
+    "height": 9,
+    "layers": 2
+  },
+  {
+    "name": "LavaPickup",
+    "width": 19,
+    "height": 9,
+    "layers": 3
+  },
+  {
+    "name": "LavaBall",
+    "width": 10,
+    "height": 10,
+    "layers": 1
+  },
+  {
+    "name": "background",
+    "width": 400,
+    "height": 300,
+    "layers": 5
+  },
+  {
+    "name": "logo2",
+    "width": 290,
+    "height": 52,
+    "layers": 6
+  },
+  {
+    "name": "1 lives",
+    "width": 110,
+    "height": 13,
+    "layers": 1
+  },
+  {
+    "name": "2 lives",
+    "width": 110,
+    "height": 13,
+    "layers": 2
+  },
+  {
+    "name": "3 lives",
+    "width": 110,
+    "height": 13,
+    "layers": 3
+  },
+  {
+    "name": "4 lives",
+    "width": 110,
+    "height": 13,
+    "layers": 4
+  },
+  {
+    "name": "5 lives",
+    "width": 110,
+    "height": 13,
+    "layers": 5
+  }
+]

@@ -1,0 +1,119 @@
+{
+  "tools": {
+    "music": "https://www.beepbox.co/",
+    "sfx": "https://sfxr.me/"
+  },
+  "sample_origin": "Original scores and patches rendered by the browser editors",
+  "music": [
+    {
+      "name": "glacier-run",
+      "bpm": 112,
+      "bars": 32,
+      "sample_rate": 48000,
+      "frames": 3291429,
+      "seconds": 68.5714375,
+      "file": "assets/sounds/music/glacier-run.ogg",
+      "source": "beepbox/glacier-run.json"
+    },
+    {
+      "name": "snowbound-menu",
+      "bpm": 84,
+      "bars": 16,
+      "sample_rate": 48000,
+      "frames": 2194286,
+      "seconds": 45.71429166666667,
+      "file": "assets/sounds/music/snowbound-menu.ogg",
+      "source": "beepbox/snowbound-menu.json"
+    }
+  ],
+  "sfx": [
+    {
+      "name": "wall-tick",
+      "seconds": 0.021179138321995465,
+      "file": "assets/sounds/sfx/wall-tick.wav",
+      "source": "jsfxr/wall-tick.json"
+    },
+    {
+      "name": "paddle-knock",
+      "seconds": 0.048117913832199544,
+      "file": "assets/sounds/sfx/paddle-knock.wav",
+      "source": "jsfxr/paddle-knock.json"
+    },
+    {
+      "name": "frost-shatter",
+      "seconds": 0.13723356009070295,
+      "file": "assets/sounds/sfx/frost-shatter.wav",
+      "source": "jsfxr/frost-shatter.json",
+      "layers": [
+        "jsfxr/frost-shatter.json",
+        "jsfxr/frost-shatter-ring.json"
+      ]
+    },
+    {
+      "name": "rock-hit",
+      "seconds": 0.060861678004535145,
+      "file": "assets/sounds/sfx/rock-hit.wav",
+      "source": "jsfxr/rock-hit.json"
+    },
+    {
+      "name": "rock-break",
+      "seconds": 0.2234013605442177,
+      "file": "assets/sounds/sfx/rock-break.wav",
+      "source": "jsfxr/rock-break.json"
+    },
+    {
+      "name": "lava-ignite",
+      "seconds": 0.4288662131519274,
+      "file": "assets/sounds/sfx/lava-ignite.wav",
+      "source": "jsfxr/lava-ignite.json"
+    },
+    {
+      "name": "life-lost",
+      "seconds": 0.2234013605442177,
+      "file": "assets/sounds/sfx/life-lost.wav",
+      "source": "jsfxr/life-lost.json"
+    },
+    {
+      "name": "menu-back",
+      "seconds": 0.07374149659863946,
+      "file": "assets/sounds/sfx/menu-back.wav",
+      "source": "jsfxr/menu-back.json"
+    },
+    {
+      "name": "pause",
+      "seconds": 0.05405895691609977,
+      "file": "assets/sounds/sfx/pause.wav",
+      "source": "jsfxr/pause.json"
+    },
+    {
+      "name": "resume",
+      "seconds": 0.05405895691609977,
+      "file": "assets/sounds/sfx/resume.wav",
+      "source": "jsfxr/resume.json"
+    },
+    {
+      "name": "launch",
+      "seconds": 0.04199546485260771,
+      "file": "assets/sounds/sfx/launch.wav",
+      "source": "jsfxr/launch.json"
+    },
+    {
+      "name": "start",
+      "seconds": 1.0,
+      "file": "assets/sounds/sfx/start.wav",
+      "source": "beepbox/start.json"
+    },
+    {
+      "name": "level-clear",
+      "seconds": 2.6666666666666665,
+      "file": "assets/sounds/sfx/level-clear.wav",
+      "source": "beepbox/level-clear.json"
+    },
+    {
+      "name": "game-over",
+      "seconds": 3.2,
+      "file": "assets/sounds/sfx/game-over.wav",
+      "source": "beepbox/game-over.json"
+    }
+  ]
+}

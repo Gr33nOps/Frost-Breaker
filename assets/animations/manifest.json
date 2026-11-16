@@ -1,0 +1,74 @@
+[
+  {
+    "name": "BallGlint",
+    "canvas": [
+      10,
+      10
+    ],
+    "frames": 6,
+    "durationMs": 120,
+    "loop": true,
+    "source": "assets/animations/aseprite/BallGlint.aseprite",
+    "png": "assets/animations/png/BallGlint.png"
+  },
+  {
+    "name": "LavaBallFlicker",
+    "canvas": [
+      10,
+      10
+    ],
+    "frames": 4,
+    "durationMs": 100,
+    "loop": true,
+    "source": "assets/animations/aseprite/LavaBallFlicker.aseprite",
+    "png": "assets/animations/png/LavaBallFlicker.png"
+  },
+  {
+    "name": "LavaPickupPulse",
+    "canvas": [
+      19,
+      9
+    ],
+    "frames": 4,
+    "durationMs": 140,
+    "loop": true,
+    "source": "assets/animations/aseprite/LavaPickupPulse.aseprite",
+    "png": "assets/animations/png/LavaPickupPulse.png"
+  },
+  {
+    "name": "IceBurst",
+    "canvas": [
+      24,
+      24
+    ],
+    "frames": 6,
+    "durationMs": 60,
+    "loop": false,
+    "source": "assets/animations/aseprite/IceBurst.aseprite",
+    "png": "assets/animations/png/IceBurst.png"
+  },
+  {
+    "name": "RockChip",
+    "canvas": [
+      24,
+      24
+    ],
+    "frames": 6,
+    "durationMs": 60,
+    "loop": false,
+    "source": "assets/animations/aseprite/RockChip.aseprite",
+    "png": "assets/animations/png/RockChip.png"
+  },
+  {
+    "name": "LavaBurst",
+    "canvas": [
+      24,
+      24
+    ],
+    "frames": 6,
+    "durationMs": 60,
+    "loop": false,
+    "source": "assets/animations/aseprite/LavaBurst.aseprite",
+    "png": "assets/animations/png/LavaBurst.png"
+  }
+]
